@@ -97,7 +97,7 @@ public class DebugContext {
                 Thread.sleep(traceDelayMs);
                 ThreadUtils.invokeAndWaitAsNeeded(() -> editor.getEditor().clearTraceHighlights());
             } catch (InterruptedException e) {
-                // Nothing to do
+                Thread.currentThread().interrupt();
             }
         }
 

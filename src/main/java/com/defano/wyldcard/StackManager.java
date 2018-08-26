@@ -169,8 +169,9 @@ public class StackManager implements StackNavigationObserver {
     public void saveStackAs(ExecutionContext context, StackModel stackModel) {
         String defaultName = "Untitled";
 
-        if (WyldCard.getInstance().getSavedStackFileProvider().blockingFirst().isPresent()) {
-            defaultName = WyldCard.getInstance().getSavedStackFileProvider().blockingFirst().get().getName();
+        Optional<File> saveStackFile = WyldCard.getInstance().getSavedStackFileProvider().blockingFirst();
+        if (saveStackFile.isPresent()) {
+            defaultName = saveStackFile.get().getName();
         } else if (stackModel.getStackName(context) != null && !stackModel.getStackName(context).isEmpty()) {
             defaultName = stackModel.getStackName(context);
         }

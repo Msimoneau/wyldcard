@@ -82,7 +82,7 @@ public abstract class Statement extends ASTNode {
             hold = new CountDownLatch(1);
             hold.await();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
         }
     }
 

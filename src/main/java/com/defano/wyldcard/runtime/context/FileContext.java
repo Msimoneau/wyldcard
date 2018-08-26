@@ -315,18 +315,12 @@ public class FileContext {
          * @throws HtSemanticException Thrown if the file does not exist.
          */
         private String getFileContents() throws HtSemanticException {
-            Scanner scanner = null;
-            try {
-                scanner = new Scanner(file).useDelimiter("\\Z");
+            try (Scanner scanner = new Scanner(file).useDelimiter("\\Z")) {
                 return scanner.next();
             } catch (FileNotFoundException e) {
                 throw new HtSemanticException("The file " + file.getAbsolutePath() + " does not exist.");
             } catch (NoSuchElementException e) {
                 return "";
-            } finally {
-                if (scanner != null) {
-                    scanner.close();
-                }
             }
         }
 

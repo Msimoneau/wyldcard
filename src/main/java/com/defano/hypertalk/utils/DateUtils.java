@@ -28,7 +28,7 @@ public class DateUtils {
         DateFormat firstFormat = format.first.dateFormat;
         DateFormat secondFormat = format.second == null ? null : format.second.dateFormat;
 
-        if (format.second != null) {
+        if (secondFormat != null) {
             return new Value(firstFormat.format(d) + " " + secondFormat.format(d));
         } else {
             return new Value(firstFormat.format(d));

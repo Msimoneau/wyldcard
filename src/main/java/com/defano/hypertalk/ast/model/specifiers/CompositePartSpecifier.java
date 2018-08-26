@@ -6,6 +6,8 @@ import com.defano.hypertalk.ast.expressions.containers.PartExp;
 import com.defano.hypertalk.exception.HtException;
 import com.defano.wyldcard.runtime.context.ExecutionContext;
 
+import java.util.Objects;
+
 /**
  * Specifies a button or field part that is not on the current card. For example, 'button 3 of card 19'
  */
@@ -69,6 +71,11 @@ public class CompositePartSpecifier implements PartSpecifier {
         } catch (HtException e) {
             return false;
         }
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(part, owningPart);
     }
 
     @Override

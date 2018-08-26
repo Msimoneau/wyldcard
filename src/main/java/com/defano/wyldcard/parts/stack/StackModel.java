@@ -440,5 +440,10 @@ public class StackModel extends PartModel implements StackPartFinder, NamedPart 
 
         return thisId.equals(thatId);
     }
+
+    @Override
+    public int hashCode() {
+        return this.getKnownProperty(new ExecutionContext(), PartModel.PROP_ID).stringValue().hashCode();
+    }
 }
 

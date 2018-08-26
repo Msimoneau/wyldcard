@@ -93,6 +93,10 @@ public class RangeUtils {
         if (c.end != null)
             endVal = c.end.evaluate(context);
 
+        if (startVal == null) {
+            throw new IllegalStateException("Start value in chunk is null.");
+        }
+
         if (!startVal.isNatural() && !Ordinal.reservedValue(startVal.integerValue()))
             throw new HtSemanticException("Chunk specifier requires natural integer value, got '" + startVal + "' instead");
         if (endVal != null && !endVal.isNatural() && !Ordinal.reservedValue(endVal.integerValue()))

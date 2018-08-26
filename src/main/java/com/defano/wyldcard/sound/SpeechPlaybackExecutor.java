@@ -70,8 +70,7 @@ public class SpeechPlaybackExecutor extends ThreadPoolExecutor {
                 latch.await();
 
             } catch (SynthesisException | IOException | LineUnavailableException | InterruptedException e) {
-                // Nothing useful to do
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         });
     }

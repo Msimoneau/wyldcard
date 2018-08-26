@@ -18,7 +18,13 @@ public class UserIcon implements ButtonIcon {
 
     @Override
     public int getId() {
-        return Math.abs(name.hashCode());
+        int nameHash = name.hashCode();
+
+        if (nameHash == Integer.MIN_VALUE) {
+            return 0;
+        } else {
+            return Math.abs(nameHash);
+        }
     }
 
     @Override
