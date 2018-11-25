@@ -14,3 +14,4 @@ bundles/
 *.jnlp
 *.jar
 *.class
+.vscode/launch.json
